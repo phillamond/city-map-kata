@@ -6,13 +6,8 @@ import java.util.List;
 
 public class CityMapNavigator {
 
-    private final Journey journey;
-    private final List<String> roads;
-
-    public CityMapNavigator(Journey journey, List<String> roads) {
-        this.journey = journey;
-        this.roads = roads;
-    }
+    private Journey journey;
+    private List<String> roads;
 
     public boolean equalsSingleRoad() {
         for (String road : roads) {
@@ -30,5 +25,13 @@ public class CityMapNavigator {
         }
         if (matchesStartLocation && matchesEndLocation) return true;
         return false;
+    }
+
+    public void setJourney(Journey journey) {
+        this.journey = journey;
+    }
+
+    public void setRoads(List<String> roads) {
+        this.roads = roads;
     }
 }

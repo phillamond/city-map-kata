@@ -7,9 +7,11 @@ import java.util.List;
 
 public class CityMap {
 
+    private final CityMapNavigator cityMapNavigator;
     private final String roadsAndLocations;
 
     /**
+     * @param cityMapNavigator
      * @param roadsAndLocations A String specification of the
      *                          connections of roads and locations. A comma-separated list
      *                          of roads between locations defined as
@@ -18,9 +20,9 @@ public class CityMap {
      *                          "a-b,b-a"     represents two locations, where travel
      *                          is possible in both directions
      *                          "a-b,b-c,c-a" represents a triangular one-way road travelling
-     *                          from a, through b and c, and finally back to a.
      */
-    public CityMap(String roadsAndLocations) {
+    public CityMap(CityMapNavigator cityMapNavigator, String roadsAndLocations) {
+        this.cityMapNavigator = cityMapNavigator;
         this.roadsAndLocations = roadsAndLocations;
     }
 
@@ -34,8 +36,8 @@ public class CityMap {
 
         Journey journey = new Journey(startLocation, destinationLocation);
         List<String> roads = Arrays.asList(roadsAndLocations.split(","));
-
-        CityMapNavigator cityMapNavigator = new CityMapNavigator(journey, roads);
+        cityMapNavigator.setJourney(journey);
+        cityMapNavigator.setRoads(roads);
 
         if (cityMapNavigator.equalsSingleRoad()) return true;
 
