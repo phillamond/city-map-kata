@@ -1,4 +1,4 @@
-package bbc.kata;
+package bbc.kata.citymap;
 
 public class Journey {
     private final String startLocation;
@@ -9,15 +9,15 @@ public class Journey {
         this.destinationLocation = destinationLocation;
     }
 
-    public String toString() {
-        return startLocation + "-" + destinationLocation;
-    }
-
     public String getStartLocation() {
         return startLocation;
     }
 
     public String getDestinationLocation() {
         return destinationLocation;
+    }
+
+    public String toString() {
+        return startLocation + "-" + destinationLocation;
     }
 }
